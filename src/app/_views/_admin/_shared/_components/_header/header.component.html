@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <button matRipple mat-icon-button (click)="toggle()">
+      <mat-icon aria-label="Sidebar close" *ngIf="!sideBarStat">menu</mat-icon>
+      <mat-icon aria-label="Sidebar open" *ngIf="sideBarStat">chevron_left</mat-icon>
+    </button>
+        <button class="logo" mat-button>UIDHTML</button>
+        <a mat-button routerLink="">
+            <mat-icon class="iconSpace" aria-label="All Notifications of UIDHTML">airplay</mat-icon>
+            <span>Frontend</span>
+        </a>
+        <span class="spacer"></span>
+        <button mat-button>Angular v6.1.1</button>
+        <button mat-icon-button>
+      <mat-icon aria-label="All Notifications of UIDHTML">notification_important</mat-icon>
+    </button>
+        <button mat-icon-button>
+      <mat-icon aria-label="Logout Admin">face</mat-icon>
+    </button>
+    </mat-toolbar-row>
+</mat-toolbar>
