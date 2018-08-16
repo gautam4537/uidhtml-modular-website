@@ -1,35 +1,82 @@
 <div class="sidebarConWrap">
-    <mat-list>
-        <mat-list-item class="heading">
+    <mat-list class="heading titleHeading">
+        <mat-list-item>
             <a>
                 <i class="material-icons">filter_list</i>
                 <span>All Categoties</span>
             </a>
         </mat-list-item>
         <mat-divider></mat-divider>
+    </mat-list>
+    <mat-list>
         <mat-list-item>
-            <a class="activeTab" routerLink="/admin/login">
-                <i class="material-icons">receipt</i>
-                <span>All Posts</span>
-            </a>
-        </mat-list-item>
-        <mat-list-item>
-            <a>
-                <i class="material-icons">file_copy</i>
-                <span>update Post</span>
-            </a>
-        </mat-list-item>
-        <mat-list-item>
-            <a routerLink="/admin/login">
-                <i class="material-icons">add_box</i>
-                <span>Add Post</span>
-            </a>
-        </mat-list-item>
-        <mat-list-item>
-            <a>
-                <i class="material-icons">videocam</i>
-                <span>Youtube videos</span>
+            <a routerLink="/admin/dashboard" [ngClass]="{'activeTab': activeTab === '/admin/dashboard'}">
+                <i class="material-icons">dashboard</i>
+                <span>Dashboard</span>
             </a>
         </mat-list-item>
     </mat-list>
+    <mat-list class="heading">
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <a>
+                <i class="material-icons">person</i>
+                <span>Posts</span>
+            </a>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </mat-list>
+    <div class="list">
+        <mat-list *ngFor="let data of sideBarLinks[0].links">
+            <mat-list-item>
+                <a routerLink="/admin/login" [ngClass]="{'activeTab': activeTab === data.url}">
+                    <i class="material-icons">{{ data.icon }}</i>
+                    <span>
+                  {{ data.text }}
+                </span>
+                </a>
+            </mat-list-item>
+        </mat-list>
+        <mat-list class="heading">
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <a>
+                    <i class="material-icons">person</i>
+                    <span>Users</span>
+                </a>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+        <mat-list>
+            <mat-list-item *ngFor="let data of sideBarLinks[0].user">
+                <a routerLink="{{ data.url }}">
+                    <i class="material-icons">{{ data.icon }}</i>
+                    <span>
+                  {{ data.text }}
+                </span>
+                </a>
+            </mat-list-item>
+        </mat-list>
+        <mat-list class="heading">
+            <mat-divider></mat-divider>
+            <mat-list-item>
+                <a>
+                    <i class="material-icons">videocam</i>
+                    <span>Youtube videos</span>
+                </a>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </mat-list>
+        <mat-list>
+            <mat-list-item *ngFor="let data of sideBarLinks[0].videos">
+                <a routerLink="{{ data.url }}">
+                    <i class="material-icons">{{ data.icon }}</i>
+                    <span>
+                  {{ data.text }}
+                </span>
+                </a>
+            </mat-list-item>
+        </mat-list>
+    </div>
+
 </div>

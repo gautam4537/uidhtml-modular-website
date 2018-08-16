@@ -1,15 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../../../../../../_material-module/material.module';
-import { HeaderComponent } from '../header.component';
-import { RouterModule } from '@angular/router';
+import { InfoLabelComponent } from '../info-label.component';
+
 @NgModule({
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule
+    InfoLabelComponent
   ],
-  exports: [HeaderComponent],
-  declarations: [HeaderComponent]
+  declarations: [InfoLabelComponent]
 })
-export class HeaderModule { }
+export class InfoLabelModule { }

@@ -1,16 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DashboardModule } from './../_views/_dashboard/_module/dashboard.module';
-import { AdminRoutingModule } from '../_routing/admin-routing.module';
-import { LoginModule } from '../../_login/module/login.module';
+import { DashboardModule } from '../_views/_dashboard/_module/dashboard.module';
+import { LoginModule } from '../../_login/_module/login.module';
+import { AdminComponent } from '../admin.component';
+import { HeaderModule } from '../_shared/_components/_header/_module/header.module';
+import { SidebarModule } from '../_shared/_components/_sidebar/_module/sidebar.module';
+import { MaterialModule } from '../../../_material-module/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    AdminRoutingModule,
     DashboardModule,
-    LoginModule
+    LoginModule,
+    HeaderModule,
+    SidebarModule,
+    MaterialModule
   ],
-  declarations: []
+  declarations: [AdminComponent]
 })
 export class AdminModule { }

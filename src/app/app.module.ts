@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRouterModule } from './_app-router-module/app-router.module';
 import { PageNotFoundModule } from './_views/_page-not-found/_module/page-not-found.module';
-import { HomepageModule } from './_views/_frontend/_views/_homepage/_module/homepage.module';
+import { AdminModule } from './_views/_admin/_module/admin.module';
+import { FrontendModule } from './_views/_frontend/_module/frontend.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HomepageModule } from './_views/_frontend/_views/_homepage/_module/home
     BrowserModule,
     PageNotFoundModule,
     AppRouterModule,
-    HomepageModule,
+    AdminModule,
+    FrontendModule,
     BrowserAnimationsModule
   ],
   providers: [],
