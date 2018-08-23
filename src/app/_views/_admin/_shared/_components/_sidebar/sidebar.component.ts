@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Keyvalue } from '../../_pipes/get-object-key-value';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,14 +13,14 @@ export class SidebarComponent implements OnInit {
   public sideBarLinks: any[] = [
     {
 
-      links: [
+      posts: [
         { text: 'All posts', icon: 'receipt', url: 'posts'},
         { text: 'Add post', icon: 'add_box', url: 'add-post'},
         { text: 'Update post', icon: 'file_copy', url: 'update-post'},
         { text: 'Published post', icon: 'check', url: 'published-posts'},
         { text: 'Unpublished Posts', icon: 'thumb_down_alt', url: 'unpublished-posts'}
       ],
-      user: [
+      visitors: [
         { text: 'Users List', icon: 'people', url: 'users'},
         { text: 'Delete user', icon: 'delete', url: 'delete-user'},
         { text: 'All Query', icon: 'grain', url: 'all-queries'},

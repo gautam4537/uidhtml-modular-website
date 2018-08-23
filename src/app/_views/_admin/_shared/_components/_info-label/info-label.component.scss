@@ -1,0 +1,54 @@
+.mat-fab {
+    border-radius: 5px;
+}
+
+.mat-card {
+    padding: 10px;
+}
+
+.mat-card-header {
+    display: flex;
+    justify-content: space-between;
+    .material-icons {
+        font-size: 35px;
+        width: 35px;
+        height: 35px;
+    }
+}
+
+.mat-card-title,
+.mat-card-subtitle {
+    font-weight: 100;
+}
+
+.mat-card-title {
+    font-size: 2rem;
+    color: #3c4858;
+    font-weight: 100;
+}
+
+.mat-card-subtitle {
+    font-size: 1rem;
+    color: #999;
+}
+
+.mat-fab {
+    width: 80px;
+    height: 80px;
+    margin-top: -30px;
+}
+
+.mat-card-footer {
+    border-top: solid 1px #eee;
+    margin: 0;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    .material-icons {
+        font-size: 15px;
+        margin-right: 5px;
+    }
+    span {
+        font-size: 11px;
+    }
+}

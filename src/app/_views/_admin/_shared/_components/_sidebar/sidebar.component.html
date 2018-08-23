@@ -16,67 +16,24 @@
             </a>
         </mat-list-item>
     </mat-list>
-    <mat-list class="heading">
-        <mat-divider></mat-divider>
-        <mat-list-item>
-            <a>
-                <i class="material-icons">person</i>
-                <span>Posts</span>
-            </a>
-        </mat-list-item>
-        <mat-divider></mat-divider>
-    </mat-list>
-    <div class="list">
-        <mat-list *ngFor="let data of sideBarLinks[0].links">
-            <mat-list-item>
-                <a routerLink="/admin/login" [ngClass]="{'activeTab': activeTab === data.url}">
-                    <i class="material-icons">{{ data.icon }}</i>
-                    <span>
-                  {{ data.text }}
-                </span>
-                </a>
-            </mat-list-item>
-        </mat-list>
+    <div class="list" *ngFor="let keys of sideBarLinks[0] | keyvalue">
         <mat-list class="heading">
             <mat-divider></mat-divider>
             <mat-list-item>
                 <a>
                     <i class="material-icons">person</i>
-                    <span>Users</span>
+                    <span>{{keys.key}}</span>
                 </a>
             </mat-list-item>
             <mat-divider></mat-divider>
         </mat-list>
-        <mat-list>
-            <mat-list-item *ngFor="let data of sideBarLinks[0].user">
-                <a routerLink="{{ data.url }}">
-                    <i class="material-icons">{{ data.icon }}</i>
-                    <span>
-                  {{ data.text }}
-                </span>
-                </a>
-            </mat-list-item>
-        </mat-list>
-        <mat-list class="heading">
-            <mat-divider></mat-divider>
+        <mat-list *ngFor="let data of keys.value">
             <mat-list-item>
-                <a>
-                    <i class="material-icons">videocam</i>
-                    <span>Youtube videos</span>
-                </a>
-            </mat-list-item>
-            <mat-divider></mat-divider>
-        </mat-list>
-        <mat-list>
-            <mat-list-item *ngFor="let data of sideBarLinks[0].videos">
-                <a routerLink="{{ data.url }}">
+                <a routerLink="/admin/login" [ngClass]="{'activeTab': activeTab === data}">
                     <i class="material-icons">{{ data.icon }}</i>
-                    <span>
-                  {{ data.text }}
-                </span>
+                    <span>{{ data.text }}</span>
                 </a>
             </mat-list-item>
         </mat-list>
     </div>
-
 </div>
