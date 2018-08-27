@@ -1,0 +1,11 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu" [overlapTrigger]="false" [hasBackdrop]="true">
+    <div>
+        <button mat-menu-item disableRipple="true">
+      <mat-icon>menu</mat-icon>
+      <span>Option 1</span>
+    </button>
+    </div>
+</mat-menu>

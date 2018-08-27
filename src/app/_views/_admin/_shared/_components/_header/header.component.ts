@@ -12,9 +12,16 @@ export class HeaderComponent implements OnInit {
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
+    const header_h = this.elementRef.nativeElement.firstElementChild.offsetHeight;
+    this.elementRef.nativeElement.style.height = header_h + 'px';
   }
   toggle() {
     this.sideBarStat = !this.sideBarStat;
+    if (this.sideBarStat === true ) {
+      this.elementRef.nativeElement.firstElementChild.style.paddingRight = '320px';
+    } else {
+      this.elementRef.nativeElement.firstElementChild.style.paddingRight = '0';
+    }
     this.toggleSidebar.emit();
   }
 }

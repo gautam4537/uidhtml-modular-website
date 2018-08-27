@@ -12,7 +12,8 @@ import {
     MatProgressBarModule,
     MatSidenavModule,
     MatListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatFormFieldModule
 } from '@angular/material';
 
 @NgModule({
@@ -29,7 +30,8 @@ import {
         MatProgressBarModule,
         MatSidenavModule,
         MatListModule,
-        MatDividerModule
+        MatDividerModule,
+        MatFormFieldModule
     ],
     exports: [
         CommonModule,
@@ -44,7 +46,8 @@ import {
         MatProgressBarModule,
         MatSidenavModule,
         MatListModule,
-        MatDividerModule
+        MatDividerModule,
+        MatFormFieldModule
     ]
 })
 

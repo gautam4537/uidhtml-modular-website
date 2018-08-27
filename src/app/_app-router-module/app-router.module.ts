@@ -11,6 +11,7 @@ const routes: Routes = [
     children: [
       { path: 'login', loadChildren: '../_views/_login/_module/login.module#LoginModule' },
       { path: 'dashboard', loadChildren: '../_views/_admin/_views/_dashboard/_module/dashboard.module#DashboardModule' },
+      { path: 'add-post', loadChildren: '../_views/_admin/_views/_alter-post/_add-post/_module/add-post.module#AddPostModule' },
       { path: '', redirectTo: '/admin/login', pathMatch: 'full' },
       { path: '**', redirectTo: '' }
     ]

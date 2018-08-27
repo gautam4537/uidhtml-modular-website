@@ -10,7 +10,7 @@
     </mat-list>
     <mat-list>
         <mat-list-item>
-            <a routerLink="/admin/dashboard" [ngClass]="{'activeTab': activeTab === '/admin/dashboard'}">
+            <a routerLink="/admin/dashboard" [ngClass]="{'activeTab': activeTab === 'dashboard'}">
                 <i class="material-icons">dashboard</i>
                 <span>Dashboard</span>
             </a>
@@ -29,7 +29,7 @@
         </mat-list>
         <mat-list *ngFor="let data of keys.value">
             <mat-list-item>
-                <a routerLink="/admin/login" [ngClass]="{'activeTab': activeTab === data}">
+                <a routerLink="{{ data.url }}" [ngClass]="{'activeTab': activeTab === data.url}">
                     <i class="material-icons">{{ data.icon }}</i>
                     <span>{{ data.text }}</span>
                 </a>

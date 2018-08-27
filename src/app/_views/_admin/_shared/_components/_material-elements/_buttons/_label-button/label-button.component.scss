@@ -1,0 +1,18 @@
+.label-button {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(60deg, #ffa726, #fb8c00);
+    box-shadow: 0 4px 20px 0 rgba(0, 0, 0, .14), 0 7px 10px -5px rgba(255, 152, 0, .4);
+    color: #fff;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.material-icons {
+    font-size: 29px;
+    width: 29px;
+    height: 29px;
+}

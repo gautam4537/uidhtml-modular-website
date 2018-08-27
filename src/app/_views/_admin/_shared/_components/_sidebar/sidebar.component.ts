@@ -16,15 +16,13 @@ export class SidebarComponent implements OnInit {
       posts: [
         { text: 'All posts', icon: 'receipt', url: 'posts'},
         { text: 'Add post', icon: 'add_box', url: 'add-post'},
-        { text: 'Update post', icon: 'file_copy', url: 'update-post'},
         { text: 'Published post', icon: 'check', url: 'published-posts'},
         { text: 'Unpublished Posts', icon: 'thumb_down_alt', url: 'unpublished-posts'}
       ],
       visitors: [
         { text: 'Users List', icon: 'people', url: 'users'},
-        { text: 'Delete user', icon: 'delete', url: 'delete-user'},
         { text: 'All Query', icon: 'grain', url: 'all-queries'},
-        { text: 'Recent Queruy', icon: 'notification_important', url: 'recent-queries'},
+        { text: 'Recent Query', icon: 'notification_important', url: 'recent-queries'},
         { text: 'Answered', icon: 'check', url: 'answered-queries'},
         { text: 'Pending Query', icon: 'thumb_down_alt', url: 'pending-queries'}
       ],
@@ -38,8 +36,9 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.activeTab = this.location;
-    console.log(this.location);
+    this.activeTab = (this.location).split('/');
+    this.activeTab = this.activeTab[2];
+    console.log(this.activeTab);
   }
 
 }

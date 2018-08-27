@@ -1,0 +1,82 @@
+<div class="formContainer">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                <h3>
+                    <i class="material-icons">add</i>Add Post</h3>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="formElementCon grid">
+                <mat-form-field>
+                    <input matInput placeholder="Title">
+                    <mat-error>
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error>
+                        Email is
+                        <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Add few words about post">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Language used (HTML, CSS, jQuery.. etc)">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Type of post (Tabbing, Accordion.. etc)">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Youtube Video Id">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Meta Title">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Meta description">
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput placeholder="Keywords">
+                </mat-form-field>
+                <div class="fileTypeInputWrapper grid">
+                    <div class="fileTypeWrapper">
+                        <div class="fileType">
+                            <mat-form-field>
+                                <input matInput placeholder="Name of JPEG file" disabled>
+                            </mat-form-field>
+                            <button mat-raised-button color="primary">Browse JPEG</button>
+                            <div class="previewCon">
+                                <img src="../../../../../../../assets/1949704400.jpg"> </div>
+                            <input type="file" [hidden]="true" value="">
+                            <input type="hidden" value="">
+                        </div>
+                    </div>
+                    <div class="fileTypeWrapper grid">
+                        <div class="fileType">
+                            <mat-form-field>
+                                <input matInput placeholder="Name of .ZIP file" disabled>
+                            </mat-form-field>
+                            <button mat-raised-button color="accent">Browse ZIP</button>
+                            <input type="file" [hidden]="true" value="">
+                            <input type="hidden" value="">
+                        </div>
+                        <mat-form-field>
+                            <input matInput placeholder="Post Creation date">
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput placeholder="Status of Post">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="postBody">
+                    <app-ck-editor></app-ck-editor>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-footer>
+            <button mat-raised-button color="primary">Submit</button>
+            <button mat-raised-button color="warn">Reset</button>
+        </mat-card-footer>
+    </mat-card>
+</div>

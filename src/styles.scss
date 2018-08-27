@@ -1,17 +1,113 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+p {
+    margin: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
 body {
     margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 10px;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: #666;
+    display: flex;
+    align-items: center;
+    i {
+        color: inherit;
+    }
+}
+
+p {
+    font-size: .9375rem;
+    color: #7e7e7e;
+    font-weight: 300;
+    line-height: 1.4rem;
+    text-align: justify;
+}
+
+.material-icons {
+    margin-right: 5px;
+}
+
+.mat-icon-button,
+.label-button {
+    .material-icons {
+        margin-right: 0;
+    }
+}
+
+.mat-drawer {
+    overflow: hidden !important;
+    &:hover {
+        overflow: auto !important;
+    }
 }
 
 .mat-card {
     box-shadow: 0 1px 4px 0 rgba(0, 0, 0, .14) !important;
-    padding: 10px;
+    padding: 10px !important;
+    border-radius: 5px !important;
+    .mat-card-header-text {
+        margin: 0;
+        flex: 1;
+    }
+    .mat-card-image {
+        width: calc(100% + 20px);
+        margin: 0 -10px 16px -10px
+    }
+    .mat-card-content {
+        padding: 0 10px 16px;
+    }
+    .mat-card-title {
+        display: flex;
+        align-items: center;
+        .headerMenu {
+            margin: auto 0 auto auto;
+        }
+    }
+    app-label-button {
+        margin-top: -28px;
+        order: -1;
+    }
 }
 
 .contentWrapper {
     padding: 40px 20px;
+}
+
+.grid {
+    display: grid;
+    grid-row-gap: 60px;
+}
+
+// Form field css
+.mat-form-field {
+    font-size: 0.875rem;
 }

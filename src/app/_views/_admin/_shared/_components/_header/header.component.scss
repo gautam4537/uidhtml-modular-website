@@ -14,3 +14,9 @@
     font-size: 16px;
     font-weight: 500;
 }
+
+.mat-toolbar {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}

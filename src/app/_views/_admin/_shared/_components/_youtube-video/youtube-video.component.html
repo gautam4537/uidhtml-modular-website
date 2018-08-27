@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h3><i class="material-icons">videocam</i>Latest Video</h3>
+            <div class="headerMenu">
+                <app-icon-menu></app-icon-menu>
+            </div>
+        </mat-card-title>
+    </mat-card-header>
+    <youtube-player [videoId]="id" width="100%" (ready)="savePlayer($event)" (change)="onStateChange($event)"></youtube-player>
+    <mat-card-content [innerHTML]="content"></mat-card-content>
+</mat-card>
