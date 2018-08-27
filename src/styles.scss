@@ -98,6 +98,11 @@ p {
     }
 }
 
+.pageWrapper {
+    height: calc(100vh - 64px);
+    overflow: auto;
+}
+
 .contentWrapper {
     padding: 40px 20px;
 }

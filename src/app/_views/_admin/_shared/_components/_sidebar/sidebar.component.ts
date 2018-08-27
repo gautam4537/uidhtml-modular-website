@@ -31,14 +31,9 @@ export class SidebarComponent implements OnInit {
       ]
     }
   ];
-  constructor(private _router: Router) {
-    this._router.events.subscribe((data: any) => { this.location = data.url; });
-  }
+  constructor(private _router: Router) { }
 
   ngOnInit() {
-    this.activeTab = (this.location).split('/');
-    this.activeTab = this.activeTab[2];
-    console.log(this.activeTab);
   }
 
 }

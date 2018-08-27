@@ -8,7 +8,7 @@ import { MatRipple } from '@angular/material';
 })
 export class HeaderComponent implements OnInit {
   @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<false>();
-  public sideBarStat: boolean = false;
+  public sideBarStat: boolean = true;
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {

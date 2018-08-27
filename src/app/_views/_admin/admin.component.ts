@@ -6,14 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  public sidebarStat: boolean = false;
+  public sidebarStat: boolean = true;
   constructor() { }
 
   ngOnInit() {
+
   }
 
   toggleSidebar(): void {
-    console.log(this.sidebarStat);
     this.sidebarStat = !this.sidebarStat;
   }
 

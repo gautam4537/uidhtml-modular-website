@@ -4,6 +4,8 @@
     </mat-drawer>
     <mat-drawer-content>
         <app-header (toggleSidebar)="toggleSidebar()"></app-header>
-        <router-outlet></router-outlet>
+        <div class="pageWrapper">
+            <router-outlet></router-outlet>
+        </div>
     </mat-drawer-content>
 </mat-drawer-container>
