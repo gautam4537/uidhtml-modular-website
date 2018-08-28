@@ -1,0 +1,69 @@
+.loginCon {
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    &:after,
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: inherit;
+        height: inherit;
+    }
+    &:before {
+        background: url('../../../assets/login-bg.jpg');
+        background-size: cover;
+        z-index: 1;
+        opacity: .3;
+    }
+    &:after {
+        background: #1c1816;
+        background-size: cover;
+        z-index: 2;
+        opacity: .3;
+    }
+}
+
+.mat-card {
+    max-width: 300px;
+    position: fixed;
+    padding: 20px !important;
+    top: 50%;
+    left: 50%;
+    transition: all ease-in-out .3s;
+    transform: translate(-50%, -50%);
+    .mat-card-header {
+        margin-bottom: 20px;
+    }
+    .mat-card-title {
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 0;
+        h2 {
+            margin-bottom: 0;
+        }
+    }
+    .mat-card-content {
+        margin-bottom: 0;
+    }
+    .mat-card-actions {
+        text-align: center;
+        button {
+            display: flex;
+            margin: 0 auto;
+            align-items: center;
+        }
+    }
+}
+
+.mat-form-field {
+    width: 100%;
+    .mat-icon {
+        color: #bbb;
+    }
+}

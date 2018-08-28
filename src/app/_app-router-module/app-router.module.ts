@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { RouterModule, Routes } from '@angular/router';
 import { PageNotFoundComponent } from '../_views/_page-not-found/page-not-found.component';
 import { AdminComponent } from '../_views/_admin/admin.component';
@@ -10,6 +11,7 @@ const routes: Routes = [
     path: 'admin', component: AdminComponent,
     children: [
       { path: 'login', loadChildren: '../_views/_login/_module/login.module#LoginModule' },
+      { path: 'logout', loadChildren: '../_views/_logout/_module/logout.module#LogoutModule' },
       { path: 'dashboard', loadChildren: '../_views/_admin/_views/_dashboard/_module/dashboard.module#DashboardModule' },
       { path: 'add-post', loadChildren: '../_views/_admin/_views/_alter-post/_add-post/_module/add-post.module#AddPostModule' },
       { path: '', redirectTo: '/admin/dashboard', pathMatch: 'prefix' },
