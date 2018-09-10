@@ -21,7 +21,7 @@
                     array_push($data, array('loggedData' => $object, 'result' => 1, 'status' => true));
                 }
             }else{
-                array_push($data, array('result' => 0, 'status' => false));
+                array_push($data, array('result' => 0, 'status' => false, 'query' => $sql));
             }
         }else{
             array_push($data, array('result' => -1, 'status' => false));

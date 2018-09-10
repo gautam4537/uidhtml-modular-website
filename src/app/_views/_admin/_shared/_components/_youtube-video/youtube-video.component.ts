@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class YoutubeVideoComponent implements OnInit {
   player: YT.Player;
-  private id: string = 'MhPf0QqEC68';
+  public id: string = 'MhPf0QqEC68';
   public content = `<h2 class="cardContentHeading">Smooth parallex animation with pure javascript</h2>
   <p>It is nessesory to initialize between 0 to 1, this determines how far is our object.
   According to this movement of object calculates itself.

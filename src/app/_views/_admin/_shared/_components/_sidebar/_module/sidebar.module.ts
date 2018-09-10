@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../../../../../../_material-module/material.module';
 import { SidebarComponent } from '../sidebar.component';
+import { Keyvalue } from '../../../_pipes/get-object-key-value';
 
 @NgModule({
   imports: [
@@ -11,6 +12,6 @@ import { SidebarComponent } from '../sidebar.component';
     RouterModule
   ],
   exports: [MaterialModule, RouterModule, SidebarComponent],
-  declarations: [SidebarComponent]
+  declarations: [SidebarComponent, Keyvalue]
 })
 export class SidebarModule { }

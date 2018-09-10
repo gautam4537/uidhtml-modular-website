@@ -1,8 +1,8 @@
 <?php
     $host = 'localhost';
-    $username = 'root';
-    $password = '';
-    $db = 'uidhtml_new';
+    $username = 'uidhtmlc_new';
+    $password = 'Kingbadshah@12';
+    $db = 'uidhtmlc_new';
     // Create connection
     $con = new mysqli($host, $username, $password, $db);
     // Check connection

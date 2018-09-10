@@ -1,16 +1,21 @@
+<!-- <a routerLink="/admin/dashboard">Admin Dashboard</a><br />
+<a routerLink="/admin/add-post">Admin add post</a><br />
+<a routerLink="/admin/login">Admin Login</a><br />
+<a routerLink="/admin/logout">Admin Logout</a>
+<router-outlet></router-outlet> -->
 <ng-template [ngIf]="loginUrl !== '/admin/login'">
-	<mat-drawer-container class="example-container">
-		<mat-drawer mode="side" [opened]="sidebarStat">
-			<app-sidebar></app-sidebar>
-		</mat-drawer>
-		<mat-drawer-content>
-			<app-header (toggleSidebar)="toggleSidebar()"></app-header>
-			<div class="pageWrapper">
-				<router-outlet></router-outlet>
-			</div>
-		</mat-drawer-content>
-	</mat-drawer-container>
+    <mat-drawer-container class="example-container">
+        <mat-drawer mode="side" [opened]="sidebarStat">
+            <app-sidebar></app-sidebar>
+        </mat-drawer>
+        <mat-drawer-content>
+            <app-header (toggleSidebar)="toggleSidebar()"></app-header>
+            <div class="pageWrapper">
+                <router-outlet></router-outlet>
+            </div>
+        </mat-drawer-content>
+    </mat-drawer-container>
 </ng-template>
-<ng-template [ngIf]="loginUrl === '/admin/login'">
-  <router-outlet></router-outlet>
+<ng-template [ngIf]="loginUrl === '/admin/login' || loginUrl === '/admin/logout'">
+    <router-outlet></router-outlet>
 </ng-template>

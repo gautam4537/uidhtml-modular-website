@@ -15,9 +15,9 @@ export class LogoutComponent implements OnInit {
   ngOnInit() {
     this.authGuard.isLoggedin = false;
     this._submitFormService._logout();
-    setTimeout(() => {
+    // setTimeout(() => {
       this.router.navigate(['/admin/login']);
-    }, 1000);
+    // }, 1000);
   }
 
 }

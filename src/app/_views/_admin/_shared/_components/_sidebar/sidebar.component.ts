@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
-import { Keyvalue } from '../../_pipes/get-object-key-value';
 
 @Component({
   selector: 'app-sidebar',

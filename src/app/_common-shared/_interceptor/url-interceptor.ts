@@ -7,10 +7,19 @@ import { Observable } from 'rxjs';
 export class UrlInterceptor implements HttpInterceptor {
     intercept( req: HttpRequest<any>, next: HttpHandler ): Observable<HttpEvent<any>> {
         // const url = 'http://localhost/uidhtml-modular-website';
-        const url = 'http://uidhtml.com/uidhtml-api';
+        const url = 'http://www.uidhtml.com/work/uidhtml-api';
         req = req.clone({
             url : url + req.url
         });
         return next.handle(req);
     }
 }
+
+/**
+ * .htaccess
+ <IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin http://localhost:4200
+    Header set Access-Control-Allow-Credentials true
+</IfModule>
+ * 
+ */

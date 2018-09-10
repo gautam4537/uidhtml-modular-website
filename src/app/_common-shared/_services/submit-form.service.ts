@@ -11,10 +11,9 @@ export class SubmitFormService {
   constructor(public _httpClient: HttpClient) {
   }
   _login(url: string, formdata: FormData) {
+    console.log(formdata);
     const header = new HttpHeaders()
-      .append('Authorization', `${this._loadToken()}`)
-      .append('Content-Type', 'application/json; charset=utf-8')
-      .append('Access-Control-Allow-Origin', '*');
+      .append('Authorization', `${this._loadToken()}`);
     return this._httpClient.post(url, formdata, { headers: header });
   }
 
