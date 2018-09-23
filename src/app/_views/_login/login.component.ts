@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
     this.form = this.fb.group({
       email: ['gautam@uidhtml.com', Validators.required],
-      password: ['kingbadshah@12', Validators.required]
+      password: ['Kingbadshah@12', Validators.required]
     });
   }
 
@@ -44,8 +44,8 @@ export class LoginComponent implements OnInit {
     }
   }
   submit() {
-    // const url: string = this.logger === 'Admin' ? '/src/app/_apis/admin/admin-login.php' : '/src/app/_apis/frontend/user-login.php';
-    const url: string = this.logger === 'Admin' ? '/admin/admin-login.php' : '/frontend/user-login.php';
+    const url: string = this.logger === 'Admin' ? '/src/app/_apis/admin/admin-login.php' : '/src/app/_apis/frontend/user-login.php';
+    // const url: string = this.logger === 'Admin' ? '/admin/admin-login.php' : '/frontend/user-login.php';
 
     const formData = new FormData();
     Object.keys(this.form.value).forEach((key) => formData.append(key, this.form.value[key]));

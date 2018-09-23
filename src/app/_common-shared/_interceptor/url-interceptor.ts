@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
 
 export class UrlInterceptor implements HttpInterceptor {
     intercept( req: HttpRequest<any>, next: HttpHandler ): Observable<HttpEvent<any>> {
-        // const url = 'http://localhost/uidhtml-modular-website';
-        const url = 'http://www.uidhtml.com/work/uidhtml-api';
+        const url = 'http://localhost/uidhtml-modular-website';
+        // const url = 'http://www.uidhtml.com/work/uidhtml-api';
         req = req.clone({
             url : url + req.url
         });

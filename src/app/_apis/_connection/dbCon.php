@@ -1,8 +1,15 @@
 <?php
+    // Server config
+    // $host = 'localhost';
+    // $username = 'uidhtmlc_new';
+    // $password = 'Kingbadshah@12';
+    // $db = 'uidhtmlc_new';
+
+    // Local Config
     $host = 'localhost';
-    $username = 'uidhtmlc_new';
-    $password = 'Kingbadshah@12';
-    $db = 'uidhtmlc_new';
+    $username = 'root';
+    $password = '';
+    $db = 'uidhtml_db';
     // Create connection
     $con = new mysqli($host, $username, $password, $db);
     // Check connection

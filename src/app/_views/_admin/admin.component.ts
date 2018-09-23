@@ -14,12 +14,12 @@ export class AdminComponent implements OnInit {
   constructor(private _router: Router, private _activatedRoute: ActivatedRoute, private _location: Location) {
     this._router.events.subscribe((val) => {
         this.loginUrl = this._location.path();
-      console.log(this.loginUrl);
+      // console.log(this.loginUrl);
     });
   }
 
   ngOnInit() {
-    console.log(this._router);
+    // console.log(this._router);
   }
 
   toggleSidebar(): void {

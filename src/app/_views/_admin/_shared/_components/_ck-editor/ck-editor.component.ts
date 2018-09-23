@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-ck-editor',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CkEditorComponent implements OnInit {
   public ckeConfig: any;
-  public ckeditorContent: String = '<p>Some html</p>';
+  @Output() public bodyContent = new EventEmitter<any>();
   constructor() { }
 
   ngOnInit() {
@@ -18,7 +18,8 @@ export class CkEditorComponent implements OnInit {
     };
   }
   onChange($event: any): void {
-    console.log('onChange');
+    console.log($event);
+    this.bodyContent.emit($event);
     // this.log += new Date() + "<br />";
   }
 }
