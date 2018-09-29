@@ -43,6 +43,8 @@ export class LoginComponent implements OnInit {
       }
     }
   }
+
+  // Submit login form
   submit() {
     const url: string = this.logger === 'Admin' ? '/src/app/_apis/admin/admin-login.php' : '/src/app/_apis/frontend/user-login.php';
     // const url: string = this.logger === 'Admin' ? '/admin/admin-login.php' : '/frontend/user-login.php';
@@ -53,7 +55,7 @@ export class LoginComponent implements OnInit {
   }
   checkLogin(url: string, formData: FormData): void {
     console.log(formData);
-    this._submitFormService._login(url, formData)
+    this._submitFormService._postData(url, formData)
       .subscribe(
         (resp: any) => {
           console.log('Resp', resp);

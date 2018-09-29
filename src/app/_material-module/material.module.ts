@@ -13,7 +13,8 @@ import {
     MatSidenavModule,
     MatListModule,
     MatDividerModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatBadgeModule
 } from '@angular/material';
 
 @NgModule({
@@ -31,7 +32,8 @@ import {
         MatSidenavModule,
         MatListModule,
         MatDividerModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatBadgeModule
     ],
     exports: [
         CommonModule,
@@ -47,7 +49,8 @@ import {
         MatSidenavModule,
         MatListModule,
         MatDividerModule,
-        MatFormFieldModule
+        MatFormFieldModule,
+        MatBadgeModule
     ]
 })
 

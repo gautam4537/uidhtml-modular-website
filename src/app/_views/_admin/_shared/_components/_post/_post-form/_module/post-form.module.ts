@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../../../../../../../_material-module/material.module';
 import { CkEditorModule } from '../../../_ck-editor/_module/ck-editor.module';
 import { PostFormComponent } from '../post-form.component';
+import { DdmmyyDatePipe } from '../../../../../../../_common-shared/_pipes/ddmmyy-date.pipe';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { PostFormComponent } from '../post-form.component';
     CkEditorModule
   ],
   exports: [PostFormComponent],
-  declarations: [PostFormComponent]
+  declarations: [PostFormComponent, DdmmyyDatePipe]
 })
 export class PostFormModule { }

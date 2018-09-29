@@ -4,7 +4,7 @@
             <mat-card-header>
                 <mat-card-title>
                     <h3>
-                        <i class="material-icons">add</i>Add Post</h3>
+                        <a mat-mini-fab disableRipple>{{total_record_in_table}}</a>Add Post</h3>
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
@@ -34,10 +34,7 @@
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field>
-                        <input matInput placeholder="Youtube Video Id" formControlName="youtubeVideo">
-                        <mat-error>
-                            Please add youtube video Id of this post.
-                        </mat-error>
+                        <input matInput placeholder="Youtube Video Id" formControlName="youtubeVideoId">
                     </mat-form-field>
                     <mat-form-field>
                         <input matInput placeholder="Meta Title" formControlName="metaTitle">
@@ -69,7 +66,7 @@
                                 <button mat-raised-button color="primary" (click)="browseFile($event)">Browse JPEG</button>
                                 <input type="file" id="imageFileField" hidden (change)="setTypeFileValToFormControl($event)" accept=".jpg, .jpeg, .png, .gif" formControlName="image">
                             </div>
-                            <div class="previewCon"><img #previewImage src="../../../../../../../assets/1949704400.jpg"> </div>
+                            <div class="previewCon"><img #previewImage src="../../../../../../../assets/images/upload-image-icon.png"> </div>
                         </div>
                     </div>
                     <div class="fileTypeInputWrapper">
@@ -77,24 +74,19 @@
                             <div class="fileType grid">
                                 <div class="inputAndErrorWrapper">
                                     <mat-form-field>
-                                        <input value="{{ form.controls['zip'].value }}" #showZipName matInput placeholder="Name of .ZIP file" disabled>
+                                        <input value="{{ showZipField.value }}" matInput placeholder="Name of .ZIP file" disabled>
                                     </mat-form-field>
-                                    <mat-error *ngIf="zipError">
-                                        !Yet .zip has not included.
-                                    </mat-error>
                                 </div>
                                 <button mat-raised-button color="accent" (click)="browseFile($event)">Browse ZIP</button>
-                                <input type="file" id="zipFileField" hidden (change)="setTypeFileValToFormControl($event)" accept=".zip" formControlName="zip">
+                                <input type="file" #showZipField id="zipFileField" hidden (change)="setTypeFileValToFormControl($event)" accept=".zip" formControlName="zip">
+                                <input hidden formControlName="zipSize">
                             </div>
                             <mat-form-field class="postDateCon">
-                                <input matInput placeholder="Post Creation date" value="{{form.controls['createdDate'].value}}" disabled>
+                                <input matInput placeholder="Post Creation date" value="{{ form.controls['createdDate'].value | date: 'dd/MM/yyyy' }}" disabled>
                                 <input hidden formControlName="createdDate">
                             </mat-form-field>
                             <mat-form-field>
                                 <input matInput placeholder="Status of Post" formControlName="status">
-                                <mat-error>
-                                    !Set the status of your post.
-                                </mat-error>
                             </mat-form-field>
                         </div>
                     </div>

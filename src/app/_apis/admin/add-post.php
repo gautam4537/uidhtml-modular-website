@@ -9,22 +9,26 @@
     $data = [];
     if($_POST){
         require('./../_connection/dbCon.php');
-        $sql = "INSERT INTO posts (title,sub_title,category,sub_category,small_desc,meta_title,meta_keywords,meta_desc,youtube_id,image,created,stat) VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO posts (postBodyId,title,description,langUsed,typeOfPost,image,youtubeVideoId,created,views,downloads,likes,metaTitle,metaDescription,keywords,zipName,zipSize,status) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         $query = $con->prepare($sql);
-        $query->bind_param('sssssssssssi', $title,$subTitle,$category,$subCategory,$smallDetails,$metaTitle,$metaKey,$metaDescription,$youtubeVideoId,$image,$created,$status);
+        $query->bind_param('isssssssiiisssssi', $postBodyId,$title,$description,$langUsed,$typeOfPost,$image,$youtubeVideoId,$created,$views,$downloads,$likes,$metaTitle,$metaDescription,$keywords,$zipName,$zipSize,$status);
 
+        $postBodyId = $_POST["postBodyId"];
         $title = $_POST["title"];
-        $subTitle = $_POST["subTitle"];
-        $category = $_POST["category"];
-        $subCategory = $_POST["subCategory"];
-        $smallDetails = $_POST["smallDetails"];
-        $details = $_POST["details"];
-        $metaTitle = $_POST["metaTitle"];
-        $metaKey = $_POST["metaKey"];
-        $metaDescription = $_POST["metaDescription"];
+        $description = $_POST["description"];
+        $langUsed = $_POST["langUsed"];
+        $typeOfPost = $_POST["typeOfPost"];
+        $image = $_POST["image"];
         $youtubeVideoId = $_POST["youtubeVideoId"];
-        $image = "image3";
         $created = $_POST["created"];
+        $views = $_POST["views"];
+        $downloads = $_POST["downloads"];
+        $likes = $_POST["likes"];
+        $metaTitle = $_POST["metaTitle"];
+        $metaDescription = $_POST["metaDescription"];
+        $keywords = $_POST["keywords"];
+        $zipName = $_POST["zipName"];
+        $zipSize = $_POST["zipSize"];
         $status = $_POST["status"];
         $query->execute();
 

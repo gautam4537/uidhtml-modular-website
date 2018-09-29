@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SubmitFormService } from './../../../../../../_common-shared/_services/submit-form.service';
 
 @Component({
   selector: 'app-post-form',
@@ -12,58 +13,47 @@ export class PostFormComponent implements OnInit {
   public imageError: boolean = false;
   public zipError: boolean = false;
   public createdDate: string = '';
+  public total_record_in_table: number = 0;
 
   public form: FormGroup;
 
   @ViewChild('imageFileInput') imageFileInput: ElementRef;
   @ViewChild('previewImage') previewImage: ElementRef;
 
-  constructor(private _fb: FormBuilder) {
-    const d: Date = new Date();
+  constructor(private _fb: FormBuilder, private _submitFormService: SubmitFormService) {
+    const date = new Date();
     this.form = this._fb.group({
-      title : ['hello', Validators.required],
+      postNum: ['', Validators.required],
+      title : ['', Validators.required],
       description: ['', Validators.required],
       langUsed: ['', Validators.required],
       postType: ['', Validators.required],
-      youtubeVideo: ['', Validators.required],
+      image: ['', Validators.required],
+      youtubeVideoId: [''],
+      createdDate: [date],
+      views: [0],
+      downloads: [0],
+      likes: [0],
       metaTitle: ['', Validators.required],
       metaDesc: ['', Validators.required],
       keywords: ['', Validators.required],
-      image: ['', Validators.required],
-      zip: ['', Validators.required],
+      zip: [''],
+      zipSize: [''],
       body: ['', Validators.required],
-      createdDate: ['', Validators.required],
-      status: ['0', Validators.required]
+      status: [0]
     });
   }
 
   ngOnInit() {
-    this.form.controls['createdDate'].setValue(this.fetchDate());
+    const tableName: string = 'posts';
+    const url: string = '/src/app/_apis/admin/get_total_record_from_table.php?tableName=' + tableName;
+    this._submitFormService._getData(url).subscribe((data) => {
+      this.total_record_in_table = data[0].row_num + 1;
+      console.log(this.total_record_in_table);
+      this.form.controls['postNum'].setValue(this.total_record_in_table);
+    });
   }
 
-  // Set zero to date
-  fetchDate(): string {
-    const date = new Date();
-    let days: string;
-    let months: string;
-    let years: string;
-    if (date.getDate() < 10) {
-      days = '0' + date.getDate().toString();
-    } else {
-      days = date.getDate().toString();
-    }
-    if (date.getMonth() < 10) {
-      months = '0' + (date.getMonth() + 1) .toString();
-    } else {
-      months = (date.getMonth() + 1).toString();
-    }
-    if (date.getFullYear() < 10) {
-      years = '0' + date.getFullYear().toString();
-    } else {
-      years = date.getFullYear().toString();
-    }
-    return days + '/' + months + '/' + years;
-  }
   // Traget file type input and apply click event to get image or zip file
   browseFile(event): void {
     event.preventDefault();
@@ -73,14 +63,15 @@ export class PostFormComponent implements OnInit {
 
   // Set value and error to image file field and zip file field
   setTypeFileValToFormControl($event) {
-    this.imageError = this.checkImageNzipError('image');
     const self = this;
     const file = $event.currentTarget.files[0];
+    const fileSize = file.size;
     if ($event.currentTarget.id === 'imageFileField') {
+      this.imageError = this.checkImageError('image');
       if (file.size >= 102400) {
         this.imageErrorData = ' File size should be less then 100KB ';
         this.form.controls['image'].setValue('');
-        this.imageError = this.checkImageNzipError('image');
+        this.imageError = this.checkImageError('image');
       } else {
         this.imageErrorData = '';
         if (file.length !== 0) {
@@ -94,7 +85,7 @@ export class PostFormComponent implements OnInit {
       }
     }
     if ($event.currentTarget.id === 'zipFileField') {
-      this.zipError = this.checkImageNzipError('zip');
+      this.form.controls['zipSize'].setValue(fileSize);
     }
   }
   // Get post body content from CkEditor
@@ -103,7 +94,7 @@ export class PostFormComponent implements OnInit {
   }
 
   // Check for image and zip error
-  checkImageNzipError(controlName: string): boolean {
+  checkImageError(controlName: string): boolean {
     let error = false;
     if ((this.form.controls[controlName].pristine && this.form.controls[controlName].status === 'INVALID')
       || !this.form.controls[controlName].value ) {
@@ -115,10 +106,9 @@ export class PostFormComponent implements OnInit {
   }
   // Submit form
   submit() {
-    this.imageError = this.checkImageNzipError('image');
-    this.zipError = this.checkImageNzipError('zip');
-
+    this.imageError = this.checkImageError('image');
     const formData = new FormData();
-    console.log(this.form.value);
+    Object.keys(this.form.value).forEach((key) => formData.append(key, this.form.value[key]));
+    console.log(formData);
   }
 }

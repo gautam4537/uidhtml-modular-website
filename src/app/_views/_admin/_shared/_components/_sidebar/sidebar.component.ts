@@ -30,7 +30,7 @@ export class SidebarComponent implements OnInit {
       ]
     }
   ];
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
   }
