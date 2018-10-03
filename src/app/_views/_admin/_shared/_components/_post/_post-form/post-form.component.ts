@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SubmitFormService } from './../../../../../../_common-shared/_services/submit-form.service';
+import { MatDialog } from '@angular/material';
+import { MaterialDialogueComponent } from '../../../../../../_common-shared/_material-dialogue/material-dialogue.component';
 
 @Component({
   selector: 'app-post-form',
@@ -8,6 +10,7 @@ import { SubmitFormService } from './../../../../../../_common-shared/_services/
   styleUrls: ['./post-form.component.scss']
 })
 export class PostFormComponent implements OnInit {
+  public formData: FormData = new FormData();
   public bodyContent: string = '';
   public imageErrorData: string = '!Yet, thumbnail has not been included.';
   public imageError: boolean = false;
@@ -17,30 +20,28 @@ export class PostFormComponent implements OnInit {
 
   public form: FormGroup;
 
-  @ViewChild('imageFileInput') imageFileInput: ElementRef;
+  @ViewChild('showImageName') showImageName: ElementRef;
   @ViewChild('previewImage') previewImage: ElementRef;
+  @ViewChild('showZipName') showZipName: ElementRef;
 
-  constructor(private _fb: FormBuilder, private _submitFormService: SubmitFormService) {
+  constructor(private _fb: FormBuilder, private _submitFormService: SubmitFormService, public dialog: MatDialog) {
     const date = new Date();
     this.form = this._fb.group({
-      postNum: ['', Validators.required],
       title : ['', Validators.required],
       description: ['', Validators.required],
       langUsed: ['', Validators.required],
       postType: ['', Validators.required],
       image: ['', Validators.required],
-      youtubeVideoId: [''],
-      createdDate: [date],
-      views: [0],
-      downloads: [0],
-      likes: [0],
+      youtubeVideoId: '',
+      createdDate: date,
+      views: 0,
+      downloads: 0,
+      likes: 0,
       metaTitle: ['', Validators.required],
       metaDesc: ['', Validators.required],
       keywords: ['', Validators.required],
-      zip: [''],
-      zipSize: [''],
       body: ['', Validators.required],
-      status: [0]
+      status: 0
     });
   }
 
@@ -49,8 +50,6 @@ export class PostFormComponent implements OnInit {
     const url: string = '/src/app/_apis/admin/get_total_record_from_table.php?tableName=' + tableName;
     this._submitFormService._getData(url).subscribe((data) => {
       this.total_record_in_table = data[0].row_num + 1;
-      console.log(this.total_record_in_table);
-      this.form.controls['postNum'].setValue(this.total_record_in_table);
     });
   }
 
@@ -65,8 +64,8 @@ export class PostFormComponent implements OnInit {
   setTypeFileValToFormControl($event) {
     const self = this;
     const file = $event.currentTarget.files[0];
-    const fileSize = file.size;
     if ($event.currentTarget.id === 'imageFileField') {
+      this.formData.append('imageFile', file);
       this.imageError = this.checkImageError('image');
       if (file.size >= 102400) {
         this.imageErrorData = ' File size should be less then 100KB ';
@@ -79,13 +78,15 @@ export class PostFormComponent implements OnInit {
           fileReader.onload = function(e) {
             self.previewImage.nativeElement.src = this.result;
             self.previewImage.nativeElement.title = file.name;
+            self.showImageName.nativeElement.value = file.name;
           };
           fileReader.readAsDataURL(file);
         }
       }
     }
     if ($event.currentTarget.id === 'zipFileField') {
-      this.form.controls['zipSize'].setValue(fileSize);
+      this.formData.append('zipFile', file);
+      this.showZipName.nativeElement.value = file.name;
     }
   }
   // Get post body content from CkEditor
@@ -107,8 +108,18 @@ export class PostFormComponent implements OnInit {
   // Submit form
   submit() {
     this.imageError = this.checkImageError('image');
-    const formData = new FormData();
-    Object.keys(this.form.value).forEach((key) => formData.append(key, this.form.value[key]));
-    console.log(formData);
+    Object.keys(this.form.value).forEach((key) => this.formData.append(key, this.form.value[key]));
+
+    const url: string = '/src/app/_apis/admin/add-post.php';
+    this._submitFormService._postData(url, this.formData).subscribe((data) => {
+      this.openDialog();
+      console.log(data);
+    });
   }
+  // Open dialog for result
+  openDialog(): void {
+    const dialogRef = this.dialog.open(MaterialDialogueComponent, {
+      width: '250px',
+      data: { header: 'Upload Report', content: 'uploaded' }
+    });
 }

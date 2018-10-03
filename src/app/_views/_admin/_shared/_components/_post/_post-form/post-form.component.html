@@ -59,7 +59,7 @@
                             <div class="fileType grid">
                                 <div class="inputAndErrorWrapper">
                                     <mat-form-field>
-                                        <input value="{{ form.controls['image'].value }}" matInput placeholder="Name of JPEG file" disabled>
+                                        <input #showImageName value="" matInput placeholder="Name of JPEG file" disabled>
                                     </mat-form-field>
                                     <mat-error *ngIf="imageError">{{ imageErrorData }}</mat-error>
                                 </div>
@@ -74,12 +74,11 @@
                             <div class="fileType grid">
                                 <div class="inputAndErrorWrapper">
                                     <mat-form-field>
-                                        <input value="{{ showZipField.value }}" matInput placeholder="Name of .ZIP file" disabled>
+                                        <input #showZipName value="" matInput placeholder="Name of .ZIP file" disabled>
                                     </mat-form-field>
                                 </div>
                                 <button mat-raised-button color="accent" (click)="browseFile($event)">Browse ZIP</button>
-                                <input type="file" #showZipField id="zipFileField" hidden (change)="setTypeFileValToFormControl($event)" accept=".zip" formControlName="zip">
-                                <input hidden formControlName="zipSize">
+                                <input type="file" #showZipField id="zipFileField" hidden (change)="setTypeFileValToFormControl($event)" accept=".zip">
                             </div>
                             <mat-form-field class="postDateCon">
                                 <input matInput placeholder="Post Creation date" value="{{ form.controls['createdDate'].value | date: 'dd/MM/yyyy' }}" disabled>

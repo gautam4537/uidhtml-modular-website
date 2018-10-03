@@ -14,7 +14,8 @@ import {
     MatListModule,
     MatDividerModule,
     MatFormFieldModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatDialogModule
 } from '@angular/material';
 
 @NgModule({
@@ -33,7 +34,8 @@ import {
         MatListModule,
         MatDividerModule,
         MatFormFieldModule,
-        MatBadgeModule
+        MatBadgeModule,
+        MatDialogModule
     ],
     exports: [
         CommonModule,
@@ -50,7 +52,8 @@ import {
         MatListModule,
         MatDividerModule,
         MatFormFieldModule,
-        MatBadgeModule
+        MatBadgeModule,
+        MatDialogModule
     ]
 })
 

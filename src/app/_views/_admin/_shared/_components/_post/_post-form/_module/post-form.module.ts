@@ -5,6 +5,7 @@ import { MaterialModule } from '../../../../../../../_material-module/material.m
 import { CkEditorModule } from '../../../_ck-editor/_module/ck-editor.module';
 import { PostFormComponent } from '../post-form.component';
 import { DdmmyyDatePipe } from '../../../../../../../_common-shared/_pipes/ddmmyy-date.pipe';
+import { MaterialDialogueModule } from '../../../../../../../_common-shared/_material-dialogue/_module/material-dialogue.module';
 
 @NgModule({
   imports: [
@@ -12,9 +13,10 @@ import { DdmmyyDatePipe } from '../../../../../../../_common-shared/_pipes/ddmmy
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    CkEditorModule
+    CkEditorModule,
+    MaterialDialogueModule
   ],
-  exports: [PostFormComponent],
+  exports: [PostFormComponent, MaterialDialogueModule],
   declarations: [PostFormComponent, DdmmyyDatePipe]
 })
 export class PostFormModule { }

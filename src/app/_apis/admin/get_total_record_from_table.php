@@ -9,10 +9,11 @@
     if($_GET){
         $table_name = $_GET['tableName'];
         require('./../_connection/dbCon.php');
-        $sql = "SELECT COUNT(*) FROM `$table_name`";
+        $sql = "SELECT * FROM `$table_name`";
         $query = $con->prepare($sql);
         $query->execute();
-        $rows = $query->num_rows;
+        $result = $query -> get_result();
+        $rows = $result->num_rows;
         $query->close();
         $con->close();
         array_push($data, array("row_num" => $rows ));
