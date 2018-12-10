@@ -1,0 +1,7 @@
+app-example-card {
+    display: block;
+    margin-right: 20px;
+    &:last-child {
+        margin-right: 0;
+    }
+}

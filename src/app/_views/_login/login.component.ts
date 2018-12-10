@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
   private msg: string = '';
 
   constructor(
+    private _title: Title,
     private _router: Router,
     private fb: FormBuilder,
     private _submitFormService: SubmitFormService,
@@ -34,6 +36,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._title.setTitle(`UIDHTML: ${this.logger}`);
     if (localStorage) {
       if (localStorage.getItem('username') && localStorage.getItem('email')) {
         this.logger === 'Admin' ? this._router.navigate(['/admin/dashboard']) : this._router.navigate(['/user/dashboard']);

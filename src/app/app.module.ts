@@ -8,6 +8,20 @@ import { UrlInterceptor } from './_common-shared/_interceptor/url-interceptor';
 import { PageNotFoundModule } from './_views/_page-not-found/_module/page-not-found.module';
 import { AdminModule } from './_views/_admin/_module/admin.module';
 import { FrontendModule } from './_views/_frontend/_module/frontend.module';
+import { HighlightModule } from 'ngx-highlightjs';
+
+import xml from 'highlight.js/lib/languages/xml';
+import scss from 'highlight.js/lib/languages/scss';
+import typescript from 'highlight.js/lib/languages/typescript';
+import javascript from 'highlight.js/lib/languages/javascript';
+export function hljsLanguages() {
+  return [
+    { name: 'typescript', func: typescript },
+    { name: 'javascript', func: javascript },
+    { name: 'scss', func: scss },
+    { name: 'xml', func: xml }
+  ];
+}
 
 @NgModule({
   declarations: [
@@ -20,7 +34,8 @@ import { FrontendModule } from './_views/_frontend/_module/frontend.module';
     AdminModule,
     FrontendModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    HighlightModule.forRoot({ languages: hljsLanguages })
   ],
   providers: [{provide: HTTP_INTERCEPTORS, useClass: UrlInterceptor, multi: true}],
   bootstrap: [AppComponent]

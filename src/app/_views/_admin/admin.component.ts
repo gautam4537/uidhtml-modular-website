@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'; 
 import { Location } from '@angular/common';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -12,14 +12,14 @@ export class AdminComponent implements OnInit {
   route: string;
   public sidebarStat: boolean = true;
   constructor(private _router: Router, private _activatedRoute: ActivatedRoute, private _location: Location) {
-    this._router.events.subscribe((val) => {
-        this.loginUrl = this._location.path();
-      // console.log(this.loginUrl);
+    this._router.events.subscribe((event) => {
+        if (event instanceof NavigationEnd) {
+          this.loginUrl = event.url;
+        }
     });
   }
 
   ngOnInit() {
-    // console.log(this._router);
   }
 
   toggleSidebar(): void {

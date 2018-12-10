@@ -1,2 +1,35 @@
-<a routerLink="/admin/dashboard">Admin Dashboard</a>
-<a routerLink="/admin/login">Admin Login</a>
+<div class="conatiner">
+    <div class="col exampleCol" (mouseenter)="mouseEnterOnCol($event)" (click)="navigatePage($event,'examplesPage')">
+        <div class="leftHalf"></div>
+        <div class="leftContentCon">
+            <div class="content">
+                <i class="material-icons">whatshot</i>
+                <h2>Stunning Experiments</h2>
+                <p>Learning is important, but application of knowledge ids more important.</p>
+                <p>This is what we can call experience.</p>
+            </div>
+        </div>
+        <div class="overlay"></div>
+    </div>
+    <div class="col tutorialCol" (mouseenter)="mouseEnterOnCol($event)" (click)="navigatePage($event,'tutorialsPage')">
+        <div class="rightHalf"></div>
+        <div class="leftContentCon">
+            <div class="content">
+                <i class="material-icons">school</i>
+                <h2>Tutorials</h2>
+                <p>Core knowledge is very important, to develope real world examples.</p>
+                <p>Good learing defines good carreer.</p>
+            </div>
+        </div>
+        <a [routerLink]="['/tutorials','bootstrap4']" class="lang-icon bootstarap"><span><span>Bootstarap 4</span></span></a>
+        <a [routerLink]="['/tutorials','angular6']" class="lang-icon angular"><span><span>Angular 6</span></span></a>
+        <a [routerLink]="['/tutorials','html5']" class="lang-icon html"><span><span>HTML5</span></span></a>
+        <a [routerLink]="['/tutorials','css3']" class="lang-icon css"><span><span>CSS3</span></span></a>
+        <a [routerLink]="['/tutorials','javascript']" class="lang-icon js"><span><span>JavaScript</span></span></a>
+        <a [routerLink]="['/tutorials','nodejs']" class="lang-icon nodejs"><span><span>Node JS</span></span></a>
+        <div class="overlay"></div>
+    </div>
+</div>
+<div class="outerCircle"></div>
+<div class="ringCircle"></div>
+<div class="pointer"></div>

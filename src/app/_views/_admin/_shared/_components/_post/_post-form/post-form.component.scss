@@ -1,6 +1,5 @@
 .formContainer {
     .mat-card {
-        padding: 20px !important;
         .mat-card-content {
             padding: 0;
         }
@@ -72,4 +71,40 @@
 
 .postDateCon {
     margin-top: 20px;
+}
+
+textarea {
+    width: 100%;
+    border: 0;
+    padding: 20px 40px 20px 20px;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+    &[formControlName="htmlCode"] {
+        background: #e34f26 url('../../../../../../../assets/images/html5-icon.png') right top no-repeat;
+        color: #fff;
+    }
+    &[formControlName="cssCode"] {
+        background: #1572b6 url('../../../../../../../assets/images/css3-icon.png') right top no-repeat;
+        color: #fff;
+    }
+    &[formControlName="javascriptCode"] {
+        background: #f0db4f url('../../../../../../../assets/images/javascript-icon.png') right top no-repeat;
+        color: #333;
+    }
+    &[formControlName="angularCode"] {
+        background: #ec494e url('../../../../../../../assets/images/angular-icon.png') right top no-repeat;
+        color: #fff;
+    }
+    &[formControlName="jqueryCode"] {
+        background: #343434;
+        color: #fff;
+    }
+    &[formControlName="typescriptCode"] {
+        background: #007acc;
+        color: #fff;
+    }
+    &[formControlName="phpCode"] {
+        background: #8b92c0;
+        color: #fff;
+    }
 }

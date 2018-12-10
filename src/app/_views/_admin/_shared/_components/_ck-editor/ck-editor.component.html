@@ -1,1 +1,3 @@
-<ckeditor [(ngModel)]="ckeditorContent" #myckeditor [config]="ckeConfig" debounce="500" (change)="onChange($event)"></ckeditor>
+<ckeditor [(ngModel)]="ckeditorContent" [config]="ckeConfig" [readonly]="false" (change)="onChange($event)" (editorChange)="onEditorChange($event)" (ready)="onReady($event)" (focus)="onFocus($event)" (blur)="onBlur($event)" (contentDom)="onContentDom($event)"
+    (fileUploadRequest)="onFileUploadRequest($event)" (fileUploadResponse)="onFileUploadResponse($event)" (paste)="onPaste($event)" (drop)="onDrop($event)" debounce="500">
+</ckeditor>

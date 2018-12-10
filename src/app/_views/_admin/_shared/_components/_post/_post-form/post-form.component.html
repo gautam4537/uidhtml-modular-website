@@ -1,4 +1,4 @@
-<form novalidate [formGroup]="form" (ngSubmit)="submit()">
+<form novalidate [formGroup]="form" (ngSubmit)="onSubmit($event)">
     <div class="formContainer">
         <mat-card>
             <mat-card-header>
@@ -90,7 +90,36 @@
                         </div>
                     </div>
                     <div class="postBody">
-                        <app-ck-editor (bodyContent)="getBodyContent($event)"></app-ck-editor>
+                        <h2>Body</h2>
+                        <app-ck-editor [ckeditorContent]="form.controls['body'].value" (bodyContent)="getBodyContent($event)"></app-ck-editor>
+                    </div>
+                    <div class="html_code">
+                        <h2>HTML Code</h2>
+                        <textarea formControlName="htmlCode" cols="30" rows="10" value="form.controls['htmlCode'].value" (input)="getExampleCode($event)"></textarea>
+                    </div>
+                    <div class="css_code">
+                        <h2>CSS Code</h2>
+                        <textarea formControlName="cssCode" cols="30" rows="10" value="form.controls['cssCode'].value" (input)="getExampleCode($event)"></textarea>
+                    </div>
+                    <div class="javascript_code">
+                        <h2>Javascript Code</h2>
+                        <textarea formControlName="javascriptCode" cols="30" rows="10" value="form.controls['javascriptCode'].value" (input)="getExampleCode($event)"></textarea>
+                    </div>
+                    <div class="angular_code">
+                        <h2>Angular Code</h2>
+                        <textarea formControlName="angularCode" cols="30" rows="10" value="form.controls['angularCode'].value" (input)="getExampleCode($event)"></textarea>
+                    </div>
+                    <div class="jquery_code">
+                        <h2>jQuery Code</h2>
+                        <textarea formControlName="jqueryCode" cols="30" rows="10" value="form.controls['jqueryCode'].value" (input)="getExampleCode($event)"></textarea>
+                    </div>
+                    <div class="typescript_code">
+                        <h2>Typescript Code</h2>
+                        <textarea formControlName="typescriptCode" cols="30" rows="10" value="form.controls['typescriptCode'].value" (input)="getExampleCode($event)"></textarea>
+                    </div>
+                    <div class="php_code">
+                        <h2>PHP Code</h2>
+                        <textarea formControlName="phpCode" cols="30" rows="10" value="form.controls['phpCode'].value" (input)="getExampleCode($event)"></textarea>
                     </div>
                 </div>
             </mat-card-content>
@@ -98,7 +127,7 @@
                 <button mat-raised-button color="primary" [disabled]="!form.valid">Submit</button>
                 <button mat-raised-button color="warn">Reset</button>
             </mat-card-footer>
-            {{ form.value | json}}<br /><br />{{form.status}}
+            <p>{{ form.value | json}}<br /><br />{{form.status}}</p>
         </mat-card>
     </div>
 </form>

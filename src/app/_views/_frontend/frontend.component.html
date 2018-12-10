@@ -1,4 +1,10 @@
-<p>
-    frontend works!
-</p>
-<router-outlet></router-outlet>
+<app-sidebar [ngClass]="{'active': sidebarVisible}"></app-sidebar>
+<div class="frontendMainView" [ngClass]="{'active': sidebarVisible}">
+    <app-header></app-header>
+    <div class="outerWrapper">
+        <div class="pageWrapper">
+            <router-outlet></router-outlet>
+        </div>
+        <app-footer></app-footer>
+    </div>
+</div>

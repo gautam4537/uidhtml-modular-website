@@ -1,0 +1,31 @@
+.mat-card-image {
+    margin: 0 0 20px 0 !important;
+    width: 100%;
+}
+
+h2 {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.intractions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    li {
+        font-size: 13px;
+        margin-right: 20px;
+        color: #b0b0b0;
+        .material-icons {
+            font-size: 14px;
+        }
+        &.share {
+            margin: auto 0 auto auto;
+        }
+        &:last-child {
+            margin: 10px 0 20px;
+            min-width: 100%;
+        }
+    }
+}

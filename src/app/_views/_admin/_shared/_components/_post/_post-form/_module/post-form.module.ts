@@ -6,6 +6,7 @@ import { CkEditorModule } from '../../../_ck-editor/_module/ck-editor.module';
 import { PostFormComponent } from '../post-form.component';
 import { DdmmyyDatePipe } from '../../../../../../../_common-shared/_pipes/ddmmyy-date.pipe';
 import { MaterialDialogueModule } from '../../../../../../../_common-shared/_material-dialogue/_module/material-dialogue.module';
+import { HighlightModule } from 'ngx-highlightjs';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { MaterialDialogueModule } from '../../../../../../../_common-shared/_mat
     FormsModule,
     ReactiveFormsModule,
     CkEditorModule,
-    MaterialDialogueModule
+    MaterialDialogueModule,
+    HighlightModule
   ],
   exports: [PostFormComponent, MaterialDialogueModule],
   declarations: [PostFormComponent, DdmmyyDatePipe]

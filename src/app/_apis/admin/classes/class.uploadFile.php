@@ -10,45 +10,55 @@ class uploadFile {
     public $target_dir;
 
     public function upload($files, $dir){
-
         $this->target_dir = '../../../assets/uploads/'.$dir;
-        // Set new file name, which will be uploaded
-        $tempName = explode('.',$files['name']);
-        $this->newFileName = round(microtime(true)) . '.' . end($tempName);
+        if(file_exists($this->target_dir)){
+            // Set new file name, which will be uploaded
+            $tempName = explode('.',$files['name']);
+            $this->newFileName = round(microtime(true)) . '.' . end($tempName);
 
-        if($this->getFileMimeType($files) == 'image/jpeg' || $this->getFileMimeType($files) == 'image/jpg' 
-        || $this->getFileMimeType($files) == 'image/png' || $this->getFileMimeType($files) == 'image/gif'){
-            $this->uploadOk = 1;
-            if($this->checkFileSizeLimit($files,204800)){
-                $this->uploadOk = 0;
-                array_push($this->status, array("result" => -1, "msg" => "Sorry, your file is too large in size (max 200kb)." ));
+            if($this->getFileMimeType($files) == 'image/jpeg' || $this->getFileMimeType($files) == 'image/jpg' 
+            || $this->getFileMimeType($files) == 'image/png' || $this->getFileMimeType($files) == 'image/gif'){
+                $this->uploadOk = 1;
+                if($this->checkFileSizeLimit($files,1004800)){
+                    $this->uploadOk = 0;
+                    array_push($this->status, array("result" => -1, "msg" => "Sorry, your file is too large in size (max 1MB)." ));
+                    return $this->status;
+                }
             }
-        }
-        if($this->getFileMimeType($files) == 'application/zip'){
-            $this->uploadOk = 1;
-        }
+            if($this->getFileMimeType($files) == 'application/zip'){
+                $this->uploadOk = 1;
+            }
 
-        if($this->getFileMimeType($files) == 'image/jpeg' || $this->getFileMimeType($files) == 'image/jpg' 
-        || $this->getFileMimeType($files) == 'image/png' || $this->getFileMimeType($files) == 'image/gif'
-        || $this->getFileMimeType($files) == 'application/zip'){
-            if($this->checkForFileExists($this->newFileName)){
-                $this->uploadOk = 0;
-                array_push($this->status, array("result" => -1, "msg" => "Sorry, file already exists." ));
-            }
-            // call upload function finally
-            if($this->uploadOk !== 0){
-                if($this->uploadFinally($files)){
-                    $this->status = array();
-                    array_push($this->status, array("result" => 1, "msg" => "uploaded","fileName" => $this->newFileName ));
+            if($this->getFileMimeType($files) == 'image/jpeg' || $this->getFileMimeType($files) == 'image/jpg' 
+            || $this->getFileMimeType($files) == 'image/png' || $this->getFileMimeType($files) == 'image/gif'
+            || $this->getFileMimeType($files) == 'application/zip'){
+                if($this->checkForFileExists($this->newFileName)){
+                    $this->uploadOk = 0;
+                    array_push($this->status, array("result" => -1, "msg" => "Sorry, file already exists." ));
+                    return $this->status;
+                }
+                 // call upload function finally
+                if($this->uploadOk !== 0){
+                   if (move_uploaded_file($files["tmp_name"], $this->target_dir.''.$this->newFileName)) { // Page reloads at this line
+                        array_push($this->status, array("result" => 1, "msg" => "uploaded", "fileName" => $this->newFileName ));
+                        return $this->status;
+                    }else{
+                        array_push($this->status, array("result" => -1, "msg" => "There is some error in moving file."));
+                        return $this->status;
+                    }
+                }else{
+                    array_push($this->status, array("result" => -1, "msg" => "Sorry, your file was not uploaded." ));
+                    return $this->status;
                 }
             }else{
-                array_push($this->status, array("result" => -1, "msg" => "Sorry, your file was not uploaded." ));
+                $this->uploadOk = 0;
+                array_push($this->status, array("result" => -1, "msg" => "This type of file can not be uploaded." ));
+                return $this->status;
             }
         }else{
-            $this->uploadOk = 0;
-            array_push($this->status, array("result" => -1, "msg" => "This type of file can not be uploaded." ));
+            array_push($this->status, array("result" => -1, "msg" => "No such directory exists." ));
+            return $this->status;
         }
-        return $this->status;
     }
 
     // Get file extension

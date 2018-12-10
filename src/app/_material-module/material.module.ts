@@ -15,7 +15,10 @@ import {
     MatDividerModule,
     MatFormFieldModule,
     MatBadgeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule
 } from '@angular/material';
 
 @NgModule({
@@ -35,7 +38,10 @@ import {
         MatDividerModule,
         MatFormFieldModule,
         MatBadgeModule,
-        MatDialogModule
+        MatDialogModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule
     ],
     exports: [
         CommonModule,
@@ -53,7 +59,10 @@ import {
         MatDividerModule,
         MatFormFieldModule,
         MatBadgeModule,
-        MatDialogModule
+        MatDialogModule,
+        MatTableModule,
+        MatPaginatorModule,
+        MatSortModule
     ]
 })
 

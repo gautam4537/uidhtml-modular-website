@@ -1,0 +1,32 @@
+.gallery {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.gallery li {
+  position: relative;
+}
+.gallery li:first-child {
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+img,
+canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+canvas {
+  transition: opacity 5s ease-out;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+}
+canvas.active {
+  opacity: 1;
+}

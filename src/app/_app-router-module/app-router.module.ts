@@ -14,6 +14,7 @@ const routes: Routes = [
       { path: 'logout', loadChildren: '../_views/_logout/_module/logout.module#LogoutModule' },
       { path: 'dashboard', loadChildren: '../_views/_admin/_views/_dashboard/_module/dashboard.module#DashboardModule' },
       { path: 'add-post', loadChildren: '../_views/_admin/_views/_alter-post/_add-post/_module/add-post.module#AddPostModule' },
+      { path: 'posts-list', loadChildren: '../_views/_admin/_views/_post-list/_module/post-list.module#PostListModule' },
       { path: '', redirectTo: '/admin/dashboard', pathMatch: 'prefix' },
       { path: '**', redirectTo: '' }
     ]
@@ -21,6 +22,8 @@ const routes: Routes = [
   {
     path: '', component: FrontendComponent,
     children: [
+      { path: 'all-examples', loadChildren: '../_views/_frontend/_views/_all-examples/_module/all-examples.module#AllExamplesModule' },
+      { path: 'tutorials/:subject', loadChildren: '../_views/_frontend/_views/_tutorials/_module/tutorials.module#TutorialsModule'},
       { path: 'user', loadChildren: '../_views/_frontend/_views/_user/_module/user.module#UserModule' },
       { path: '', loadChildren: '../_views/_frontend/_views/_homepage/_module/homepage.module#HomepageModule' }
     ]

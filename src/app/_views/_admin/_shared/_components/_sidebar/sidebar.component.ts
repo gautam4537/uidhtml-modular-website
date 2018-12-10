@@ -8,13 +8,11 @@ import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 })
 export class SidebarComponent implements OnInit {
   public activeTab: string = '';
-  private location: any;
   public sideBarLinks: any[] = [
     {
-
       posts: [
-        { text: 'All posts', icon: 'receipt', url: 'posts'},
-        { text: 'Add post', icon: 'add_box', url: 'add-post'},
+        { text: 'All posts', icon: 'receipt', url: 'posts-list'},
+        { text: 'Add post', icon: 'add_box', url: 'add-post' },
         { text: 'Published post', icon: 'check', url: 'published-posts'},
         { text: 'Unpublished Posts', icon: 'thumb_down_alt', url: 'unpublished-posts'}
       ],
