@@ -38,7 +38,7 @@
                     $description = $_POST["description"];
                     $langUsed = $_POST["langUsed"];
                     $typeOfPost = $_POST["postType"];
-                    $image = '';
+                    $image = $imageName;
                     $youtubeVideoId = $_POST["youtubeVideoId"];
                     $created = $_POST["createdDate"];
                     $views = $_POST["views"];
@@ -84,5 +84,5 @@
    }else{
        array_push($data, array("result" => -1, "msg" => "Some error occord in posting data." ));
    }
-    echo json_encode($data);
+   echo json_encode($data);
 ?>

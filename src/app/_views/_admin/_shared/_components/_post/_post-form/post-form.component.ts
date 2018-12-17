@@ -141,6 +141,7 @@ export class PostFormComponent implements OnInit {
 
     const url: string = '/src/app/_apis/admin/add-post.php';
     this._submitFormService._postData(url, this.formData).subscribe((data) => {
+      console.log(data);
       this.openDialog(event, data[0].msg);
       if (data[0].result === 1) {
         this.resetForm();

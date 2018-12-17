@@ -39,13 +39,9 @@ class uploadFile {
                 }
                  // call upload function finally
                 if($this->uploadOk !== 0){
-                   if (move_uploaded_file($files["tmp_name"], $this->target_dir.''.$this->newFileName)) { // Page reloads at this line
-                        array_push($this->status, array("result" => 1, "msg" => "uploaded", "fileName" => $this->newFileName ));
-                        return $this->status;
-                    }else{
-                        array_push($this->status, array("result" => -1, "msg" => "There is some error in moving file."));
-                        return $this->status;
-                    }
+                    move_uploaded_file($files["tmp_name"], $this->target_dir.''.$this->newFileName);
+                    array_push($this->status, array("result" => 1, "msg" => "uploaded","fileName" => $this->newFileName ));
+                    return $this->status;
                 }else{
                     array_push($this->status, array("result" => -1, "msg" => "Sorry, your file was not uploaded." ));
                     return $this->status;
